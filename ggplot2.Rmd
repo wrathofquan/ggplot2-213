@@ -1,14 +1,11 @@
 ---
 title: "Data Visualization in R with ggplot2"
 author: "Josh Quan"
-date: "2/23/2021"
+always_allow_html: true
 output:
   html_document:
     toc: yes
     toc_float: yes
-  pdf_document:
-    toc: yes
-
 ---
 
 ```{r, include=FALSE, eval=FALSE}
@@ -48,6 +45,7 @@ library(patchwork)
 
 ---
 
+
 ## ggplot2 $\in$ tidyverse
 
 
@@ -55,6 +53,7 @@ library(patchwork)
 knitr::include_graphics("./img/ggplot2-part-of-tidyverse.png")
 ```
 ---
+
 
 ## ggplot2 $\in$ tidyverse
 
@@ -115,9 +114,7 @@ stops <- read_csv("./data/opp-search-marijuana_state.csv") %>%
 
 ```
 
-
-
----
+--
 class: center, middle
 
 # Layer up!
@@ -163,22 +160,6 @@ wa_plot
 * GEOM
 
 ---
-
-
-## Your turn!
-
-**Exercise:** Determine which variable is mapped to which aesthetic (x-axis, y-axis, etc.) element 
-of the dataset.
-
-```{r echo=FALSE,out.width= "70%"}
-stops %>% ggplot(aes(x = quarter , y = search_rate_100, color = driver_race)) + 
-  geom_point() + 
-  theme_minimal(base_size = 12) +
-  labs(title = "Washington") + ## scale_fill for 2d objects like bars, scale_color for lines
-  #scale_color_brewer(type = qual, palette = "Dark2") 
-  theme(legend.title = element_blank()) + scale_x_date(date_breaks = "1 year", date_labels = "%Y")  
-```
-
 
 ---
 
@@ -267,7 +248,6 @@ ggplot(data = stops, aes(x = quarter, y = search_rate_100, color = driver_race))
 
 ---
 
-
 ## ggplot, the making of
 
 1. "Initialize" a plot with ggplot()
@@ -337,13 +317,16 @@ ggplot(data = stops) +
 
 ---
 
-## Different mappings for different `geom`s
+## Different mappings for different `geoms`
 
 ```{r}
 ggplot(data = stops, mapping = aes(x = quarter, y = search_rate_100)) +
   geom_point() +
   geom_smooth(aes(color = driver_race), method = "loess", se = FALSE)
 ```
+
+
+---
 
 
 ---
@@ -371,7 +354,6 @@ ggplot(data = stops,
 ```
 ---
 
-
 - Can specify [HTML color codes](https://htmlcolorcodes.com/)
 ```{r}
 ggplot(data = stops, 
@@ -382,7 +364,6 @@ ggplot(data = stops,
 
 ---
 
-
 ## Data can be passed in
 
 ```{r}
@@ -391,14 +372,6 @@ stops %>%
     geom_point()
 ```
 
----
-
-## Parameters can be unnamed
-
-```{r}
-ggplot(stops, aes(x = quarter, y = search_rate_100)) +
-  geom_point()
-```
 
 
 ---
@@ -418,7 +391,6 @@ p + geom_smooth()
 
 ---
 
-
 # Common early pitfalls
 
 
@@ -431,6 +403,7 @@ ggplot(data = stops) +
 ```
 
 ---
+
 ## Mappings that aren't
 
 ```{r}
@@ -519,7 +492,6 @@ ggplot(data = stops, aes(x = quarter, y = search_rate_100, color = driver_race))
 
 ```
 
----
 
 ## Your turn!
 
@@ -888,6 +860,7 @@ knitr::include_graphics("./img/ggplot2-template.png")
   - [Data Visualization: A Practical Introduction](https://kieranhealy.org/publications/dataviz/) by Healy
 * [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)
 * [ggplot2 Cheat sheet](https://rstudio.com/resources/cheatsheets/)
+
 
 
 
