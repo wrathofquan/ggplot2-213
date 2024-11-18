@@ -3,10 +3,14 @@ title: "Data Visualization in R with ggplot2"
 author: "Josh Quan"
 always_allow_html: true
 output:
-  html_document:
-    toc: yes
-    toc_float: yes
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: default
 ---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
 
 ```{r, include=FALSE, eval=FALSE}
 #install.packages("devtools", repos = 'http://cran.us.r-project.org')
@@ -105,7 +109,7 @@ knitr::include_graphics("./img/tidy-workflow-packages.png")
 * Police Stop Data
   - state, driver race, stop rate, marijuana legalization status
 
-```{r, message=FALSE, eval=TRUE} 
+```{r, message=FALSE, eval=TRUE, width="50"} 
 
 stops <- read_csv("./data/opp-search-marijuana_state.csv") %>% 
   filter(state %in% c("WA", "CO")) %>% 
@@ -114,14 +118,13 @@ stops <- read_csv("./data/opp-search-marijuana_state.csv") %>%
 
 ```
 
---
-class: center, middle
 
-# Layer up!
+
+<!-- # Layer up! -->
 ---
  
 
-```{r echo=FALSE, eval= TRUE, out.width="100%"}
+```{r echo=FALSE, eval= FALSE, out.width="100%"}
 wa_plot <- stops %>% filter(state == "WA") %>% 
   ggplot(aes(x = quarter , y = search_rate_100, 
              color = driver_race, 
@@ -163,7 +166,6 @@ wa_plot
 
 ---
 
-class: center, middle
 
 # Step-by-step
 
@@ -825,7 +827,6 @@ To really master themes:
 
 ---
 
-class: center, middle
 
 # Recap
 
