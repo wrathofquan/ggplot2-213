@@ -505,6 +505,7 @@ ggplot(data = stops, aes(x = quarter, y = search_rate_100, color = driver_race))
 
 ```
 
+---
 
 ## Your turn!
 
@@ -772,6 +773,8 @@ co_stops <- stops %>% filter(state == "CO") %>%
 ```
 
 
+---
+
 ## Combining several plots to a grid
 
 
@@ -780,6 +783,7 @@ wa_stops + co_stops
 
 (wa_stops / co_stops)
 ```
+
 ---
 
 
@@ -806,6 +810,7 @@ plotly::ggplotly(wa_stops)
 knitr::include_graphics("./img/cnbc.png")
 ```
 
+---
 
 Starter code:
 ```{r}
@@ -829,7 +834,7 @@ stops %>% filter(state == "WA") %>%
 - Experiment with [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)
 
 
-
+---
 
 ## Themes Vignette
 
