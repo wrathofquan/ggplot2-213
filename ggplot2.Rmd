@@ -165,9 +165,9 @@ wa_plot
 
 ## Basic ggplot2 syntax
 
-* DATA
-* MAPPING
-* GEOM
+* Data
+* (Aesthetic) mapping to variables
+* Geom
 
 ---
 
