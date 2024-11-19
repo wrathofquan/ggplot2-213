@@ -262,22 +262,10 @@ ggplot(data = stops, aes(x = quarter, y = search_rate_100, color = driver_race))
 
 ---
 
-## ggplot, the making of
-
-1. "Initialize" a plot with ggplot()
-2. Add layers with geom_ functions
-
-```
-ggplot(data = <DATA>) +
-  (mapping = aes(<MAPPINGS>)) +
-  <GEOM_FUNCTION>
-```
-
----
 
 
 
-# Mapping
+# Mapping variables
 
 
 
@@ -347,7 +335,7 @@ ggplot(data = stops, mapping = aes(x = quarter, y = search_rate_100)) +
 
 ### Set vs. map
 
-- To **map** an aesthetic to a variable, place it inside `aes()`
+- To **map** an aesthetic to a variable, place it inside `aes()`. Think of this as a *global* rule
 
 ```{r}
 ggplot(data = stops, 
@@ -359,7 +347,7 @@ ggplot(data = stops,
 
 ---
 
-- To **set** an aesthetic to a value, place it outside `aes()`
+- To **set** an aesthetic to a value, place it outside `aes()`. Think of this as a *local* setting
 ```{r}
 ggplot(data = stops, 
   mapping = aes(x = quarter, 
