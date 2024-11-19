@@ -851,13 +851,13 @@ To really master themes:
 
 ---
 
-## The basics
+## Takeaways
 
 * map variables to aethestics
 * add "geoms" for visual representation layers
 * scales can be independently managed
-* legends are automatically created
-* statistics are sometimes calculated by geoms
+* legends are automatically created but can be managed 
+* statistics are sometimes calculated by geoms so understand how geoms work
 
 ---
 
