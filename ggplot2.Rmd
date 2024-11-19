@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r include=FALSE}
-knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, out.width="50%")
 ```
 
 ```{r, include=FALSE, eval=FALSE}
@@ -53,9 +53,11 @@ library(patchwork)
 ## ggplot2 $\in$ tidyverse
 
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("./img/ggplot2-part-of-tidyverse.png")
 ```
+
+
 ---
 
 
@@ -69,7 +71,7 @@ knitr::include_graphics("./img/ggplot2-part-of-tidyverse.png")
 
 ---
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("./img/grammar-of-graphics.png")
 ```
 
@@ -80,7 +82,7 @@ knitr::include_graphics("./img/grammar-of-graphics.png")
 ## ggplot2 $\in$ tidyverse
 
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("./img/tidy-workflow.png")
 ```
 
@@ -91,7 +93,7 @@ knitr::include_graphics("./img/tidy-workflow.png")
 
 
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("./img/tidy-workflow-packages.png")
 ```
 
@@ -104,17 +106,20 @@ knitr::include_graphics("./img/tidy-workflow-packages.png")
 [Stanford Open Policing Project](https://openpolicing.stanford.edu/) 
 
 
-[Police Searches Drop Dramatically in States that Legalized Marijuana](https://www.nbcnews.com/news/us-news/police-searches-drop-dramatically-states-legalized-marijuana-n776146)
+
 
 * Police Stop Data
   - state, driver race, stop rate, marijuana legalization status
 
 ```{r, message=FALSE, eval=TRUE, width="50"} 
 
-stops <- read_csv("./data/opp-search-marijuana_state.csv") %>% 
-  filter(state %in% c("WA", "CO")) %>% 
-  mutate(legalization_status = ifelse(quarter <= "2013-01-01", "pre","post"),
+stops <- readr::read_csv("./data/opp-search-marijuana_state.csv") %>% 
+  dplyr::filter(state %in% c("WA", "CO")) %>% 
+  dplyr::mutate(legalization_status = ifelse(quarter <= "2013-01-01", "pre","post"),
          search_rate_100 = search_rate * 100) 
+
+str(stops)
+head(stops)
 
 ```
 
@@ -172,6 +177,7 @@ wa_plot
 ---
 
 ```{r}
+library(ggplot2)
 ggplot(data = stops)
 ```
 
@@ -194,6 +200,10 @@ ggplot(data = stops, mapping = aes(x = quarter, y = search_rate_100)) +
 ggplot(data = stops, aes(x = quarter, y = search_rate_100, color = driver_race)) + 
   geom_point()
 ```
+
+---
+
+[Police Searches Drop Dramatically in States that Legalized Marijuana](https://www.nbcnews.com/news/us-news/police-searches-drop-dramatically-states-legalized-marijuana-n776146)
 
 ---
 
@@ -257,8 +267,8 @@ ggplot(data = stops, aes(x = quarter, y = search_rate_100, color = driver_race))
 
 ```
 ggplot(data = <DATA>) +
-  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))+
-  geom_point(mapping = aes(x = displ, y = hwy))
+  (mapping = aes(<MAPPINGS>)) +
+  <GEOM_FUNCTION>
 ```
 
 ---
@@ -354,6 +364,7 @@ ggplot(data = stops,
                 y = search_rate_100)) +
   geom_point(color = "red") 
 ```
+
 ---
 
 - Can specify [HTML color codes](https://htmlcolorcodes.com/)
@@ -461,7 +472,7 @@ ggplot(data = stops, aes(x = quarter, y = search_rate_100)) +
 
 ```
 
-
+---
 
 ## The power of groups
 
@@ -623,6 +634,7 @@ ggplot(stops, aes(x = quarter, y = search_rate_100, color = driver_race)) +
   geom_smooth(se = FALSE)
 
 ```
+
 ---
 
 ## Splitting over facets
