@@ -113,19 +113,21 @@ knitr::include_graphics("./img/tidy-workflow-packages.png")
 
 ```{r, message=FALSE, eval=TRUE, width="50"} 
 
-stops <- readr::read_csv("./data/opp-search-marijuana_state.csv") %>% 
-  dplyr::filter(state %in% c("WA", "CO")) %>% 
-  dplyr::mutate(legalization_status = ifelse(quarter <= "2013-01-01", "pre","post"),
-         search_rate_100 = search_rate * 100) 
+stops <- readr::read_csv("./data/stops.csv") 
+
+
+```
+
+
+
+
+```{r, message=FALSE, eval=TRUE, width="50"} 
 
 str(stops)
 head(stops)
 
 ```
 
-
-
-<!-- # Layer up! -->
 ---
  
 
